@@ -11,6 +11,7 @@
 
 ### 界面预览
 <img src="https://i.imgs.ovh/2025/10/14/72EAdq.png" alt="72EAdq.png" border="0">
+
 ### 本地功能与隐私
 - 与 **Eagle** 的交互通过 **本机端口** 完成（默认 `http://localhost:41595`），数据不经第三方服务器。  
 - GIF 由浏览器端使用 `gif.js` 生成，worker 脚本从 jsDelivr 拉取后以 **Blob Worker** 方式本地执行。  
