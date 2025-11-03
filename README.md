@@ -10,7 +10,11 @@
 3. 访问 Pixiv，即可看到右上角 **PTE** 工具条
 
 ### 界面预览
+<img src="https://i.imgs.ovh/2025/11/03/7xVt6F.png" alt="7xVt6F.png" border="0">
 <img src="https://i.imgs.ovh/2025/10/14/72EAdq.png" alt="72EAdq.png" border="0">
+
+### 单作品下载功能预览
+<img src="https://i.imgs.ovh/2025/11/03/7xzUOY.gif" alt="7xzUOY.gif" border="0">
 
 ### 本地功能与隐私
 - 与 **Eagle** 的交互通过 **本机端口** 完成（默认 `http://localhost:41595`），数据不经第三方服务器。  
