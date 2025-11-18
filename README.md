@@ -1,52 +1,65 @@
 # PTE · Pixiv → Eagle
 
-一键导入 Pixiv 到 Eagle（含 ugoira→GIF）；支持详情/列表/勾选；进度/ETA/可取消；面板可拖动并记忆位置；本地或 Eagle 模式。
+一键导入 Pixiv 图片到 Eagle。有 UI 操作界面，本地或 Eagle 模式切换，实时进度条显示。
 
-- **安装（推荐）**：从 [GreasyFork](https://greasyfork.org/zh-CN/scripts/552563-pte-pixiv-eagle) 安装  
+- **安装（推荐）**：从 [GreasyFork](https://greasyfork.org/zh-CN/scripts/552563-pte-pixiv-eagle) 安装
+
+## 功能特性
+
+### 0.9.8.8 版本标签版新增
+- **三栏式界面**：将标签分为"待翻译"、"已翻译"、"排除"三个列表
+- **拖放排序**：轻松拖拽重新排列每列中的标签
+- **标签翻译**：自动或手动翻译标签
+- **搜索过滤**：支持关键词搜索标签
+- **编辑管理**：编辑、删除和组织标签，提供友好的用户界面
+- **自动保存**：所有标签翻译和设置自动保存到本地
+
+> **注**：标签管理功能是可选的，不强制使用。即使不使用标签管理器，也不会对标签产生任何影响，用户可根据需要自由选择使用。
 
 ## 快速开始
+
+### 安装步骤
 1. 安装 Tampermonkey（或 Violentmonkey）
 2. 打开 GreasyFork 安装脚本
-3. 访问 Pixiv，即可看到右上角 **PTE** 工具条
+3. 访问 Pixiv，即可看到右上角 **PTE** 工具条（如看不到，请拉宽浏览器窗口）
 
 ### 界面预览
-<img src="https://i.imgs.ovh/2025/11/03/7xVt6F.png" alt="7xVt6F.png" border="0">
-<img src="https://i.imgs.ovh/2025/10/14/72EAdq.png" alt="72EAdq.png" border="0">
+<img
+src="https://i.imgs.ovh/2025/11/03/7xVt6F.png" alt="界面预览1" border="0">
+<img
+src="https://i.imgs.ovh/2025/10/14/72EAdq.png" alt="界面预览2" border="0">
 
 ### 单作品下载功能预览
-<img src="https://i.imgs.ovh/2025/11/03/7xzUOY.gif" alt="7xzUOY.gif" border="0">
+<img src="https://i.imgs.ovh/2025/11/03/7xzUOY.gif" alt="下载预览" border="0">
 
 ### 本地功能与隐私
-- 与 **Eagle** 的交互通过 **本机端口** 完成（默认 `http://localhost:41595`），数据不经第三方服务器。  
-- GIF 由浏览器端使用 `gif.js` 生成，worker 脚本从 jsDelivr 拉取后以 **Blob Worker** 方式本地执行。  
-- 脚本的外部网络访问域名仅为：
-  - `i.pximg.net`（获取 Pixiv 资源）
-  - `cdn.jsdelivr.net`（仅拉取 `gif.worker.js`）
-  - `localhost` / `127.0.0.1`（与 Eagle 通信）
-- 不收集任何个人信息；所用第三方库与来源均在下方列出。
+- 与 Eagle 通过本机端口通信（默认 `http://localhost:41595`），数据不经过第三方服务器
+- GIF 由浏览器端生成，所有脚本资源均来自本地或 jsDelivr
+- 外部网络访问仅限于：`i.pximg.net`、`cdn.jsdelivr.net`、`localhost`
+- 不收集任何个人信息
 
 ### 前置条件
-请确保本机已运行 **Eagle** 并开启本地 API（默认 [`http://localhost:41595`](http://localhost:41595)）。  
-首次使用建议在 **Pixiv 详情页** 测试。
+确保已运行 Eagle 并开启本地 API（默认 [`http://localhost:41595`](http://localhost:41595)）
 
-### 权限与外部请求说明
-- `@grant`：`GM_xmlhttpRequest`，`GM_download`  
+### 权限说明
+- `@grant`：`GM_xmlhttpRequest`、`GM_download`
 - `@connect`：`localhost` / `127.0.0.1` / `i.pximg.net` / `cdn.jsdelivr.net`
 
-### 外部库（通过 `@require` 引入）
+### 外部库
 - `fflate@0.8.2`（压缩/解压）
-- `gif.js@0.2.0`（GIF 生成；*worker* 代码从 jsDelivr 获取并以 **Blob** 形式加载）
+- `gif.js@0.2.0`（GIF 生成）
 
 ### 常见问题
-- **按钮没出现**：确认站点为 `pixiv.net`，并等待页面加载到 `document-idle`。  
-- **Eagle 连接失败**：确认已启动 Eagle 且本地 API 可用。  
-- **GIF 失败**：尝试刷新重试；若为超大 ugoira，处理时间会更长。  
-- **无法下载**：检查浏览器 / 脚本管理器的跨域与下载权限设置。
+- **按钮没出现**：确认站点为 `pixiv.net`，稍等片刻页面加载完成
+- **Eagle 连接失败**：确认已启动 Eagle 且 API 可用
+- **GIF 失败**：刷新重试；超大 ugoira 处理时间较长
+- **无法下载**：检查浏览器跨域和下载权限设置
 
 ### 参考与致谢
-本脚本在交互与实现上参考/借鉴了以下项目，在此致谢（如有不便引用请联系我移除）：
 - [Save Pixiv pictures to Eagle](https://greasyfork.org/zh-CN/scripts/419792-save-pixiv-pictures-to-eagle)
 - [Pixiv2Eagle](https://greasyfork.org/zh-CN/scripts/533713-pixiv2eagle)
 - [Pixiv Previewer](https://greasyfork.org/zh-CN/scripts/30766-pixiv-previewer)
+
 ## 许可
+
 MIT
